@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Media Downloader</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, "Segoe UI", system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { width: 360px; margin: 0; color: #eef2ff; background: #111827; }
+      header { padding: 20px 20px 16px; background: linear-gradient(135deg, #172554, #1e293b); border-bottom: 1px solid #334155; }
+      h1 { margin: 0; font-size: 18px; letter-spacing: -.2px; }
+      .subhead { margin: 5px 0 0; color: #a5b4fc; font-size: 12px; }
+      main { padding: 16px 20px 20px; }
+      .section { margin: 0 0 18px; padding: 14px; background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+      h2 { margin: 0 0 12px; color: #cbd5e1; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; }
+      label { display: block; margin: 12px 0 0; color: #e2e8f0; font-size: 13px; }
+      label:first-of-type { margin-top: 0; }
+      select, input[type="text"] { width: 100%; margin-top: 6px; padding: 9px 10px; color: #f8fafc; background: #0f172a; border: 1px solid #475569; border-radius: 8px; font: inherit; }
+      input[type="text"]:disabled { opacity: .45; cursor: not-allowed; }
+      .check { display: flex; align-items: center; gap: 9px; cursor: pointer; }
+      .check input { width: 16px; height: 16px; accent-color: #818cf8; }
+      button { width: 100%; padding: 11px 14px; border: 0; border-radius: 9px; color: white; background: #6366f1; cursor: pointer; font: 600 14px inherit; transition: background .15s, transform .15s; }
+      button:hover { background: #4f46e5; } button:active { transform: scale(.98); }
+      #status { min-height: 18px; margin: 10px 0 0; color: #86efac; text-align: center; font-size: 12px; }
+      #status.error { color: #fca5a5; }
+    </style>
+  </head>
+  <body>
+    <header><h1>Media Downloader</h1><p class="subhead">Choose how your downloads should work.</p></header>
+    <main>
+      <section class="section"><h2>Quality</h2>
+        <label>Maximum resolution
+          <select id="resolution"><option value="best">Best available</option><option value="2160">4K (2160p)</option><option value="1440">2K (1440p)</option><option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option><option value="360">360p</option><option value="144">144p</option></select>
+        </label>
+        <label class="check"><input type="checkbox" id="audio-only" /> Download audio only (MP3)</label>
+        <label class="check"><input type="checkbox" id="embed-meta" /> Include metadata and thumbnail</label>
+      </section>
+      <section class="section"><h2>Save location</h2>
+        <label class="check"><input type="checkbox" id="ask-save" /> Ask where to save each file</label>
+        <label>Downloads subfolder<input type="text" id="subfolder" placeholder="e.g. videos" /></label>
+      </section>
+      <button id="save-btn">Save settings</button><p id="status" aria-live="polite"></p>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

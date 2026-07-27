@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "yt-dlp Context Menu",
+  "version": "1.0.0",
+  "description": "Right-click to download or copy videos via yt-dlp",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "downloads",
+    "scripting",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Media Downloader settings",
+    "default_icon": "icon.png",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitter.com/*", "*://*.x.com/*", "*://*.reddit.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "host_permissions": ["http://127.0.0.1:5000/*"]
+}
